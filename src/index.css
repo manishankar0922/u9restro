@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-brand-50: #fdfcfb;
+  --color-brand-100: #fbf7f4;
+  --color-brand-200: #f6ebe2;
+  --color-brand-300: #eccdba;
+  --color-brand-400: #deac8d;
+  --color-brand-500: #c87a53;
+  --color-brand-600: #b8663d;
+  --color-brand-700: #994f2d;
+  --color-brand-800: #7a3e23;
+  --color-brand-900: #532917;
+  --color-brand-950: #2d140a;
+
+  --color-accent-50: #fafaf9;
+  --color-accent-100: #f5f5f4;
+  --color-accent-200: #e7e5e4;
+  --color-accent-300: #d6d3d1;
+  --color-accent-400: #a8a29e;
+  --color-accent-500: #78716c;
+  --color-accent-600: #57524f;
+  --color-accent-700: #44403c;
+  --color-accent-800: #292524;
+  --color-accent-900: #1c1917;
+  --color-accent-950: #0c0a09;
+
+  --color-gold-50: #fffdf5;
+  --color-gold-100: #fefbeb;
+  --color-gold-200: #fdf5c7;
+  --color-gold-300: #faea93;
+  --color-gold-400: #f6d552;
+  --color-gold-500: #e8b923;
+  --color-gold-600: #c59516;
+  --color-gold-700: #9c7012;
+  --color-gold-800: #745110;
+  --color-gold-900: #4e350c;
+
+  --font-sans: 'Outfit', 'Inter', system-ui, sans-serif;
+  
+  --shadow-glass: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+  --shadow-glass-dark: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  --shadow-premium: 0 20px 40px -15px rgba(0,0,0,0.1);
+  --shadow-premium-hover: 0 30px 60px -15px rgba(0,0,0,0.15);
+}
+
+:root {
+  color-scheme: light dark;
+}
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  font-family: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  overflow-x: hidden;
+  background-color: #0c0a09; /* stone-950 */
+  color: #fafaf9; /* stone-50 */
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(12, 10, 9, 0.5);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(120, 113, 108, 0.3);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(120, 113, 108, 0.6);
+}
+
+/* Smooth glassmorphic highlights */
+.glass-panel {
+  background: rgba(28, 25, 23, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(120, 113, 108, 0.15);
+}
+
+.glass-panel-light {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(220, 215, 210, 0.5);
+}
+
+/* Pulse animation for active orders */
+@keyframes order-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0px rgba(184, 102, 61, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(184, 102, 61, 0);
+  }
+}
+.active-pulse {
+  animation: order-pulse 2s infinite;
+}
+
+/* Shimmer effect for loaders */
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+.shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.shimmer::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateX(-100%);
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.05) 20%,
+    rgba(255, 255, 255, 0.1) 60%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: shimmer 2s infinite;
+  content: '';
+}
+
+/* Hide scrollbar utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

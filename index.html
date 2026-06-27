@@ -2,12 +2,72 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍽️</text></svg>" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>DineTab | QR Dine-In & Kitchen Optimization Ecosystem</title>
-    <meta name="description" content="An interactive, high-fidelity SaaS demo of a Restaurant QR Dine-In and Kitchen Optimization Ecosystem." />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>☕</text></svg>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    <title>Sri Narayana Grand | Authentic Udupi & Andhra Cuisine</title>
+    <meta name="description" content="Experience the finest authentic Udupi breakfast, traditional South Indian meals, spicy Andhra Specials, and signature filter coffee at Sri Narayana Grand." />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Sri Narayana Grand | Authentic Udupi & Andhra Cuisine" />
+    <meta property="og:description" content="Experience the finest authentic Udupi breakfast, traditional South Indian meals, spicy Andhra Specials, and signature filter coffee at Sri Narayana Grand." />
+    <meta property="og:image" content="/sng-hero.jpg" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content="Sri Narayana Grand | Authentic Udupi & Andhra Cuisine" />
+    <meta property="twitter:description" content="Experience the finest authentic Udupi breakfast, traditional South Indian meals, spicy Andhra Specials, and signature filter coffee at Sri Narayana Grand." />
+    <meta property="twitter:image" content="/sng-hero.jpg" />
+
+    <!-- LocalBusiness & Restaurant Schema -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Restaurant",
+        "name": "Sri Narayana Grand",
+        "image": "https://srinarayanagrand.com/sng-hero.jpg",
+        "@id": "https://srinarayanagrand.com",
+        "url": "https://srinarayanagrand.com",
+        "telephone": "+917671856676",
+        "priceRange": "$$",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "123 Heritage Street, Culinary District",
+          "addressLocality": "Udupi",
+          "postalCode": "576101",
+          "addressCountry": "IN"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 13.340880,
+          "longitude": 74.742142
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday",
+              "Saturday",
+              "Sunday"
+            ],
+            "opens": "07:00",
+            "closes": "22:30"
+          }
+        ],
+        "servesCuisine": [
+          "Udupi",
+          "Andhra",
+          "South Indian",
+          "Vegetarian"
+        ]
+      }
+    </script>
   </head>
-  <body class="bg-stone-950 text-stone-50 select-none">
+  <body class="bg-[#fdfcfb] text-[#2d140a]">
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

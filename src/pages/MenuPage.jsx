@@ -508,13 +508,13 @@ Please confirm my reservation.`;
       
       {/* Navigation */}
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${mobileMenuOpen ? 'bg-[#1c1917]' : 'bg-[#1c1917]/95 backdrop-blur-md border-b border-stone-800'}`}>
-        <div className="flex items-center justify-between px-6 md:px-12 py-5">
+        <div className="flex items-center justify-between px-4 sm:px-6 md:px-12 py-4 sm:py-5">
           
           <Link to="/" className="flex flex-col drop-shadow-2xl z-50 hover:opacity-90 transition-opacity">
-            <div className="font-serif text-2xl md:text-4xl tracking-[0.03em] font-medium leading-none mb-1 text-[#fdfcfb]">
+            <div className="font-serif text-xl sm:text-2xl md:text-4xl tracking-[0.03em] font-medium leading-none mb-1 text-[#fdfcfb]">
               Sri Narayana Grand
             </div>
-            <div className="font-sans text-[0.55rem] md:text-xs uppercase tracking-[0.4em] text-[#e7e5e4] font-medium ml-0.5 opacity-90">
+            <div className="font-sans text-[0.5rem] sm:text-[0.6rem] md:text-xs uppercase tracking-[0.4em] text-[#e7e5e4] font-medium ml-0.5 opacity-90">
               Authentic Udupi Cuisine
             </div>
           </Link>
@@ -835,29 +835,46 @@ Please confirm my reservation.`;
         </div>
       </footer>
 
-      {/* Floating Sticky Buttons */}
-      
-      {/* Floating WhatsApp Button (Bottom Left) */}
-      <a 
-        href={`https://wa.me/917671856676?text=${encodeURIComponent("Hello Sri Narayana Grand, I visited your website and would like to know more about your restaurant. Please assist me.")}`}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={`fixed bottom-6 left-6 z-40 bg-[#25d366] text-white p-4 rounded-full shadow-2xl flex items-center justify-center transition-all duration-500 transform ${showStickyReserve ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-20 opacity-0 scale-90'}`}
-        aria-label="Chat on WhatsApp"
+      {/* Premium Unified Mobile Bottom Dock (Mobile Only) */}
+      <div 
+        className={`md:hidden fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] max-w-sm bg-stone-950/90 backdrop-blur-lg border border-white/10 rounded-full px-5 py-2.5 shadow-2xl flex items-center justify-between gap-4 z-40 transition-all duration-500 transform ${showStickyReserve ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-20 opacity-0 scale-90'}`}
       >
-        <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
-          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.504-5.717-1.465L0 24zm6.59-4.846c1.6.95 3.197 1.451 4.793 1.453 5.429 0 9.856-4.417 9.859-9.849.002-2.63-1.023-5.101-2.885-6.964C16.55 1.93 14.076 1.05 11.453 1.05c-5.435 0-9.859 4.417-9.86 9.85 0 1.951.51 3.852 1.478 5.534L2.09 21.94l5.658-1.486z" />
-        </svg>
-      </a>
+        {/* WhatsApp Link */}
+        <a 
+          href={`https://wa.me/917671856676?text=${encodeURIComponent("Hello Sri Narayana Grand, I visited your website and would like to know more about your restaurant. Please assist me.")}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex flex-col items-center gap-0.5 text-white opacity-85 hover:opacity-100 transition-opacity active:scale-95"
+          aria-label="Chat on WhatsApp"
+        >
+          <div className="bg-[#25d366] text-white p-2 rounded-full shadow-md flex items-center justify-center">
+            <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
+              <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.504-5.717-1.465L0 24zm6.59-4.846c1.6.95 3.197 1.451 4.793 1.453 5.429 0 9.856-4.417 9.859-9.849.002-2.63-1.023-5.101-2.885-6.964C16.55 1.93 14.076 1.05 11.453 1.05c-5.435 0-9.859 4.417-9.86 9.85 0 1.951.51 3.852 1.478 5.534L2.09 21.94l5.658-1.486z" />
+            </svg>
+          </div>
+          <span className="text-[0.55rem] font-bold tracking-wider uppercase font-sans">Chat</span>
+        </a>
 
-      {/* Sticky Mobile CTA (Bottom Right) */}
-      <button 
-        onClick={() => setIsModalOpen(true)}
-        className={`fixed bottom-6 right-6 md:hidden z-40 bg-[#c87a53] text-white p-4 rounded-full shadow-2xl flex items-center justify-center transition-all duration-500 transform ${showStickyReserve ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-20 opacity-0 scale-90'}`}
-        aria-label="Reserve Table"
-      >
-        <span className="text-xs uppercase tracking-widest font-semibold px-2 font-sans">Reserve</span>
-      </button>
+        {/* Tap to Call Link */}
+        <a 
+          href="tel:+917671856676"
+          className="flex flex-col items-center gap-0.5 text-white opacity-85 hover:opacity-100 transition-opacity active:scale-95"
+          aria-label="Call Us"
+        >
+          <div className="bg-[#c87a53]/20 border border-[#c87a53]/40 text-[#c87a53] p-2 rounded-full shadow-md flex items-center justify-center font-sans">
+            <Phone size={18} />
+          </div>
+          <span className="text-[0.55rem] font-bold tracking-wider uppercase font-sans">Call</span>
+        </a>
+
+        {/* Primary Book Table CTA */}
+        <button 
+          onClick={() => setIsModalOpen(true)}
+          className="flex-1 py-3 px-5 bg-gradient-to-r from-[#c87a53] to-[#7a3e23] hover:from-[#b8663d] hover:to-[#6a331a] text-white text-[0.65rem] uppercase tracking-widest font-bold rounded-full shadow-md active:scale-[0.98] transition-all flex items-center justify-center gap-2 cursor-pointer font-sans"
+        >
+          Book Table
+        </button>
+      </div>
 
       {/* Reservation Modal (Native App feel) */}
       {isModalOpen && (

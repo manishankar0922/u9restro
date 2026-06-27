@@ -40,51 +40,38 @@ export default function LandingPage() {
 
   // Slider state
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  const timelineRef = useRef(null);
 
-  // Handle slide exit and rotation
+  // Handle slide rotation timer (loops every 5 seconds)
   useEffect(() => {
-    if (reduce || isTransitioning) return;
+    if (reduce) return;
 
-    const timer = setTimeout(() => {
-      setIsTransitioning(true);
-
-      if (timelineRef.current) {
-        timelineRef.current.kill();
-      }
-
+    const interval = setInterval(() => {
+      // Fade out active slide content
       const tl = gsap.timeline({
         onComplete: () => {
           setCurrentSlideIndex((prev) => (prev + 1) % slides.length);
-          setIsTransitioning(false);
         }
       });
-
-      timelineRef.current = tl;
-
-      tl.to('.hero-image-active', { opacity: 0, scale: 0.95, duration: 1, ease: 'power2.inOut' }, 0)
-        .to('.hero-text-active', { opacity: 0, y: -40, duration: 0.8, ease: 'power2.in' }, 0);
-
+      tl.to('.hero-image-active', { opacity: 0, scale: 0.95, duration: 0.8, ease: 'power2.inOut' }, 0)
+        .to('.hero-text-active', { opacity: 0, y: -40, duration: 0.6, ease: 'power2.in' }, 0);
     }, 5000);
 
     return () => {
-      clearTimeout(timer);
-      if (timelineRef.current) {
-        timelineRef.current.kill();
-      }
+      clearInterval(interval);
     };
-  }, [currentSlideIndex, isTransitioning, reduce]);
+  }, [reduce]);
 
-  // Handle slide mount and enter animation
+  // Handle slide entry animation when slide index changes
   useEffect(() => {
     if (reduce) return;
 
     const tl = gsap.timeline();
     
+    // Set initial hidden state (to prevent flashing)
     gsap.set('.hero-image-active', { opacity: 0, scale: 1.12 });
     gsap.set('.hero-text-active', { opacity: 0, y: 40 });
 
+    // Animate to full visibility
     tl.to('.hero-image-active', { opacity: 1, scale: 1.02, duration: 1.2, ease: 'power2.out' }, 0)
       .to('.hero-image-active', { scale: 1, duration: 5.5, ease: 'none' }, 0)
       .to('.hero-text-active', { opacity: 1, y: 0, duration: 1.2, ease: 'power3.out' }, 0.4);
@@ -312,11 +299,12 @@ Please confirm my reservation.`;
             alt={activeSlide.title}
             className="hero-image-active w-full h-full object-cover origin-center absolute inset-0 z-0 select-none"
             style={{
-              filter: 'brightness(1.22) contrast(1.08) saturate(1.15) sepia(0.08)'
+              filter: 'brightness(1.22) contrast(1.08) saturate(1.15) sepia(0.08)',
+              opacity: 0
             }}
           />
           
-          <div className="hero-text-active absolute inset-0 z-20 flex flex-col items-center justify-center text-center px-6 mt-16 pointer-events-none">
+          <div className="hero-text-active absolute inset-0 z-20 flex flex-col items-center justify-center text-center px-6 mt-16 pointer-events-none" style={{ opacity: 0 }}>
             <span className="font-sans text-xs md:text-sm uppercase tracking-[0.3em] mb-4 text-[#e7e5e4] drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)]">
               {activeSlide.subtitle}
             </span>

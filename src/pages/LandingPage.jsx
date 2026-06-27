@@ -258,26 +258,43 @@ Please confirm my reservation.`;
             </button>
           </div>
 
-          {/* Mobile Hamburger Toggle */}
-          <button 
-            className="md:hidden text-white mt-1 z-50 p-2 -mr-2"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle Menu"
-          >
-            {mobileMenuOpen ? <X size={28} /> : <MenuIcon size={28} />}
-          </button>
+          {/* Mobile Action Controls */}
+          <div className="md:hidden flex items-center gap-4 z-50 mt-1">
+            <Link 
+              to="/menu" 
+              className="px-5 py-2 bg-gradient-to-r from-[#c87a53] to-[#7a3e23] text-white text-[0.7rem] uppercase tracking-[0.15em] font-bold rounded-full shadow-lg border border-white/10 active:scale-95 transition-transform"
+            >
+              Explore Menu
+            </Link>
+            <button 
+              className="text-white p-2 -mr-2"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Toggle Menu"
+            >
+              {mobileMenuOpen ? <X size={28} /> : <MenuIcon size={28} />}
+            </button>
+          </div>
         </div>
       </nav>
 
       {/* Mobile Fullscreen Menu */}
       <div className={`fixed inset-0 bg-[#1c1917] z-40 transition-transform duration-700 ease-in-out flex flex-col justify-center px-12 ${mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
         <div className="flex flex-col gap-10 text-white font-serif text-4xl">
-          <Link to="/menu" onClick={() => setMobileMenuOpen(false)} className="hover:text-[#c87a53] transition-colors">Menu</Link>
+          <Link 
+            to="/menu" 
+            onClick={() => setMobileMenuOpen(false)} 
+            className="text-[#c87a53] hover:text-white transition-colors flex items-center justify-between border-b border-white/10 pb-4"
+          >
+            <span>Menu</span>
+            <span className="text-[0.6rem] font-sans uppercase tracking-[0.2em] font-semibold bg-gradient-to-r from-[#c87a53] to-[#7a3e23] text-white py-1.5 px-4 rounded-full border border-white/10 animate-pulse">
+              Highly Recommended
+            </span>
+          </Link>
           <a href="#story" onClick={() => setMobileMenuOpen(false)} className="hover:text-[#c87a53] transition-colors">Our Story</a>
           <a href="#contact" onClick={() => setMobileMenuOpen(false)} className="hover:text-[#c87a53] transition-colors">Contact</a>
           <button 
             onClick={() => { setMobileMenuOpen(false); setIsModalOpen(true); }}
-            className="mt-8 px-8 py-4 bg-[#c87a53] text-white text-sm font-sans uppercase tracking-[0.2em] w-max"
+            className="mt-8 px-8 py-4 bg-[#c87a53] text-white text-sm font-sans uppercase tracking-[0.2em] w-max rounded-full"
           >
             Reserve a Table
           </button>

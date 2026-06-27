@@ -547,6 +547,16 @@ Please confirm my reservation.`;
       <div className={`fixed inset-0 bg-[#1c1917] z-40 transition-transform duration-700 ease-in-out flex flex-col justify-center px-12 ${mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
         <div className="flex flex-col gap-10 text-white font-serif text-4xl">
           <Link to="/" onClick={() => setMobileMenuOpen(false)} className="hover:text-[#c87a53] transition-colors">Home</Link>
+          <Link 
+            to="/menu" 
+            onClick={() => setMobileMenuOpen(false)} 
+            className="text-[#c87a53] hover:text-white transition-colors flex items-center justify-between border-b border-white/10 pb-4"
+          >
+            <span>Menu</span>
+            <span className="text-[0.6rem] font-sans uppercase tracking-[0.2em] font-semibold bg-gradient-to-r from-[#c87a53] to-[#7a3e23] text-white py-1.5 px-4 rounded-full border border-white/10">
+              Active
+            </span>
+          </Link>
           <a href="/#story" onClick={() => setMobileMenuOpen(false)} className="hover:text-[#c87a53] transition-colors">Our Story</a>
           <a href="/#contact" onClick={() => setMobileMenuOpen(false)} className="hover:text-[#c87a53] transition-colors">Contact</a>
           <button 
